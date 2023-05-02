@@ -2,15 +2,17 @@
 
 On the Terra network, all transactions incur a gas fee. Transactions involving stablecoins incur additional fees depending on the type of transaction being made. The following table explains which extra fee is added to the different types of stablecoin transactions:
 
-|                                                                        | [Gas](#gas) | [Tobin](#tobin-tax) | [Spread](#spread-fee) |
-|------------------------------------------------------------------------|-------------|---------------------|-----------------------|
-| [Market swaps](./glossary.md#market-swap) between stablecoins          | x           | x                   |                       |
-| [Market swaps](./glossary.md#market-swap) between stablecoins and Luna | x           |                     | x                     |
+|                                                                                                               | [Gas](#gas) | [Tobin](#tobin-tax) | [Spread](#spread-fee) | Burn tax |
+| ------------------------------------------------------------------------------------------------------------- | ----------- | ------------------- | --------------------- | -------- |
+| ~~[Market swaps](./glossary.md#market-swap) between stablecoins~~ **DISABLED DUE TO HIPERINFLATION**          | x           | x                   |                       |          |
+| ~~[Market swaps](./glossary.md#market-swap) between stablecoins and Luna~~ **DISABLED DUE TO HIPERINFLATION** | x           |                     | x                     |          |
+| Transactions between wallets                                                                                  | x           |                     |                       | x        |
 
 All other transactions only incur the gas fee.
 Terraswap or other dApps may charge their own transaction fees on top of Terra network fees.
 
-## Gas
+# Gas
+
 [Gas](glossary.md#fees) is a small computational fee that covers the cost of processing a transaction. Gas is estimated and added to every transaction in Terra Station. Any transaction that does not contain enough gas will not process.
 Gas on Terra works differently than it works on other blockchains:
 
@@ -25,6 +27,21 @@ To view current gas rates in your browser, visit the [gas rates](https://fcd.ter
 
 Every block, gas fees are sent to the reward pool and dispersed to validators who distribute them to delegators in the form of staking rewards.
 
+## Tax
+
+The tax is calculated based on a tax rate and applied to transactions. There's also a maximum tax cap. The tax is then split between the community pool and burning, based on a predefined burn split rate.
+
+    Tax = min(Tax_rate * Sent_amount, Tax_cap)
+
+    Community_pool_tax = Tax * Burn_split_rate
+    Burn_tax = Tax - Community_pool_tax
+
+Every block, the community pool taxes are dispersed to validators who distribute them to delegators in the form of staking rewards. The burn tax is removed from the total supply.
+
+### Whitelisted wallets
+
+Since version 1.0.5 some wallets are exampt from the Burn tax.
+
 ## Tobin tax
 
 The Tobin tax is a fixed percentage fee added to any [market swap](glossary.md#market-swap) between Terra stablecoin denominations. The rate varies depending on each Terra stablecoin. For example, while the rate for most denominations is .35%, the rate for MNT is 2%. To see the Tobin tax rates, [query the oracle](https://lcd.terra.dev/terra/oracle/v1beta1/denoms/tobin_taxes). When stablecoins have different Tobin tax rates, the higher tax rate will be used for the transaction.
@@ -32,7 +49,6 @@ The Tobin tax is a fixed percentage fee added to any [market swap](glossary.md#m
 The Tobin tax was created to discourage front-running the oracle and foreign exchange trading at the expense of users. For more information on the implementation of the Tobin tax, read ["On swap fees: the greedy and the wise"](https://medium.com/terra-money/on-swap-fees-the-greedy-and-the-wise-b967f0c8914e).
 
 Every block, Tobin tax fees are sent to the [Oracle reward pool] and [dispersed to validators](https://docs.terra.money/docs/develop/module-specifications/spec-oracle.html#k-rewardballotwinners) that faithfully report correct exchange rates. Validators then distribute these fees to delegators in the form of staking rewards. For more information on the Oracle reward pool, visit the [Oracle module](../develop/module-specifications/spec-oracle.md).
-
 
 ## Spread fee
 

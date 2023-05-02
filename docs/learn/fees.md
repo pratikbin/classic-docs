@@ -38,9 +38,9 @@ The tax is calculated based on a tax rate and applied to transactions. There's a
 
 Every block, the community pool taxes are dispersed to validators who distribute them to delegators in the form of staking rewards. The burn tax is removed from the total supply.
 
-### Whitelisted wallets
+### Tax exemption
 
-Since version 1.0.5 some wallets are exampt from the Burn tax.
+Some wallets are exampt from the Burn tax.
 
 ## Tobin tax
 

@@ -87,7 +87,7 @@ Congratulations! You have just created a Terra Station wallet.
 
    To view more exchanges, visit the [Integrations page](../../../ecosystem/integrations.md#exchanges).
 
-2. Purchase tokens using your preffered exchange.
+2. Purchase tokens using your preferred exchange.
 
 1. Withdraw any token supported by the Terra network from your exchange. Every exchange is different. Please visit your exchange's web page for guides on how to withdraw tokens. Use the following steps as a generic guide.
 
@@ -128,7 +128,7 @@ After a few moments, the tokens will appear in the receiver's wallet.
 
 3. To connect your wallet, click **Connect Wallet** at the top of the page.
 
-4. Select **Terra Station Wallet** to connect your wallet.  
+4. Select **Terra Station Wallet** to connect your wallet.
 
 You can now make transactions on different dApps in the Terra ecosystem.
 

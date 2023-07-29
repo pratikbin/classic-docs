@@ -1,10 +1,10 @@
 # Keys
 
-To perform actions using an account and private-public key pairs with Terra.js, you need an implementation of the [ *Key* ](https://github.com/terra-money/terra.js/blob/main/src/key/Key.ts) class, which provides an abstraction around the signing functions of an account. There are multiple implementations available: 
+To perform actions using an account and private-public key pairs with Terra.js, you need an implementation of the [ *Key* ](https://github.com/terra-money/terra.js/blob/main/src/key/Key.ts) class, which provides an abstraction around the signing functions of an account. There are multiple implementations available:
 
 [ *RawKey* ](https://github.com/terra-money/terra.js/blob/main/src/key/RawKey.ts)
-[ *MnemonicKey* ](https://github.com/terra-money/terra.js/blob/main/src/key/MnemonicKey.ts) 
-[ *CLIKey* ](https://github.com/terra-money/terra.js/blob/main/src/key/CLIKey.ts) 
+[ *MnemonicKey* ](https://github.com/terra-money/terra.js/blob/main/src/key/MnemonicKey.ts)
+[ *CLIKey* ](https://github.com/terra-money/terra.js/blob/main/src/key/CLIKey.ts)
 
 You can also create a custom signing solution by extending the base [ *Key* ](https://github.com/terra-money/terra.js/blob/main/src/key/Key.ts) class.
 
@@ -29,10 +29,10 @@ see(raw_key.accAddress)//terra1ptj88nsljjr9agx07hahu6etv43acksy2q44sd
 
 
 A `MnemonicKey` derives itself from a 24-word  [ BIP-39 ](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) mnemonic as opposed to the bytes of a  private key.
-A `MnemonicKey` has various levels of definition: 
+A `MnemonicKey` has various levels of definition:
 - Supply no arguments for the mnemonic to be randomly generated ( effectively generating a random key ).
 - Supply only a 24-word BIP-39 mnemonic to generate a corresponding key.
-- Supply a full HD path (using either a  random or particular mnenomic).
+- Supply a full HD path (using either a  random or particular mnemonic).
 
 ```ts
 import { MnemonicKey } from '@terra-money/terra.js';
@@ -41,7 +41,7 @@ const see = console.log;
 const MNE_KEY_RANDOM = new MnemonicKey();
 
 see(MNE_KEY_RANDOM.mnemonic)  // famous { ... } myth world size
-see(MNE_KEY_RANDOM.privateKey) // <Buffer 4f e5 { ... } 51 a4 41 9c> 
+see(MNE_KEY_RANDOM.privateKey) // <Buffer 4f e5 { ... } 51 a4 41 9c>
 see(MNE_KEY_RANDOM.publicKey) // SimplePublicKey { key: 'A8TNSJhn6gGHgY2ohJnkOaZz7Y0FaW/QeytGBaqCLIJU' }
 see(MNE_KEY_RANDOM.accAddress) // terra1l63e8q7yjyd77qanwfgvl43ulagf34a2xzcuv4
 
@@ -58,10 +58,10 @@ const MNE_KEY_RANDOM_WITH_HD_PATH = new MnemonicKey({
 });
 
 const MNE_KEY_FULLY_RESOLVED = new MnemonicKey({
-  mnemonic: "squirrel future level fan world organ daring thing color orange sausage cross fault interest blast wink audit unfair satoshi solution track indoor sun edit",   
-  coinType: 330,               
-  account : 0,                 
-  index   : 0,                
+  mnemonic: "squirrel future level fan world organ daring thing color orange sausage cross fault interest blast wink audit unfair satoshi solution track indoor sun edit",
+  coinType: 330,
+  account : 0,
+  index   : 0,
 });
 
 ```

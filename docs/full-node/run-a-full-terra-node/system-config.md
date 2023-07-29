@@ -1,7 +1,7 @@
 # System configuration
 
 :::{admonition} Recommended operating systems
-:class: caution  
+:class: caution
 This guide has been tested against Linux distributions only. To ensure a successful production environment setup, consider using a Linux system.
 :::
 
@@ -14,28 +14,28 @@ These are the the minimum requirements for running a full Terra node:
 - Four or more CPU cores
 - At least 32 GB of memory
 - At least 300 mbps of network bandwidth
-- At least 2 TB NVME SSD 
+- At least 2 TB NVME SSD
 
 :::{admonition} Storage requirements
 :class: warning
-As the network grows, the minimum storage requirements will also grow. It is recommended that you use more than the minimum storage requirements to run a robust full node. 
+As the network grows, the minimum storage requirements will also grow. It is recommended that you use more than the minimum storage requirements to run a robust full node.
 
 :::
 
 ## Prerequisites
 
-- [Golang v1.16.1 - go1.17.1 linux/amd64](https://go.dev/dl/)
+- [Golang v1.20.6 linux/amd64](https://go.dev/dl/)
 
   ::: {dropdown} Installing Go for MacOS & Linux
 
   Go releases can be found here: [ https://go.dev/dl/ ](https://go.dev/dl/)
 
-  In your browser, you can right-click the correct release (v1.16.1 - go1.17.1) and `Copy link`.
+  In your browser, you can right-click the correct release (v1.20.6) and `Copy link`.
 
   ```bash
   # 1. Download the archive
 
-  wget https://go.dev/dl/go1.17.1.linux-amd64.tar.gz
+  wget https://go.dev/dl/go1.20.6.linux-amd64.tar.gz
 
   # Optional: remove previous /go files:
 
@@ -43,7 +43,7 @@ As the network grows, the minimum storage requirements will also grow. It is rec
 
   # 2. Unpack:
 
-  sudo tar -C /usr/local -xzf go1.17.1.linux-amd64.tar.gz
+  sudo tar -C /usr/local -xzf go1.20.6.linux-amd64.tar.gz
 
   # 3. Add the path to the go-binary to your system path:
   # (for this to persist, add this line to your ~/.profile or ~/.bashrc or  ~/.zshrc)
@@ -54,7 +54,7 @@ As the network grows, the minimum storage requirements will also grow. It is rec
 
   go version
 
-  # go version go1.17.1 linux/amd64
+  # go version go1.20.6 linux/amd64
 
   ```
 
@@ -74,9 +74,9 @@ Additional ports:
 
 - `1317`: The default port for the [Lite Client Daemon](../../develop/how-to/start-lcd.md) (LCD), which can be executed by `terrad rest-server`. The LCD provides an HTTP RESTful API layer to allow applications and services to interact with your `terrad` instance through RPC. For usage examples, see [Terra REST API](https://lcd.terra.dev/swagger/). You don't need to open this port unless you have use for it.
 
-- `26660`: The default port for interacting with the [Prometheus](https://prometheus.io) database, which can be used to monitor the environment. In the default configuration, this port is not open.
-
 - `26657`: The default port for the RPC protocol. Because this port is used for querying and sending transactions, it must be open for serving queries from `terrad`.
+
+- `26660`: The default port for interacting with the [Prometheus](https://prometheus.io) database, which can be used to monitor the environment. In the default configuration, this port is not open.
 
 ::: {warning}
 Do not open port `26657` to the public unless you plan to run a public node.
